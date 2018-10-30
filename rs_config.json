@@ -1,0 +1,35 @@
+[
+  {
+    "type": "MongoDB",
+    "config": {
+      "address": "mongodb://localhost:27017",
+      "name": "mock_db",
+      "filterList": [
+        {
+          "collection": "currency",
+          "query": {"USD": {"$gt": "50"}},
+          "projection": {"projection": {"_id":0}}
+        },
+        {
+          "collection": "places",
+          "query": {"Location": "Toronto"},
+          "projection": {"projection": {"_id":0}}
+        }
+      ]
+    }
+  },
+  {
+    "type": "MongoDB",
+    "config": {
+      "address": "mongodb://localhost:27017",
+      "name": "mock_db2",
+      "filterList": [
+        {
+          "collection": "food",
+          "query": {},
+          "projection": {"projection": {"_id":0}}
+        }
+      ]
+    }
+  }
+]
