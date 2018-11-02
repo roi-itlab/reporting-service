@@ -9,7 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "csv-parser": "^2.1.0",
     "express": "^4.16.4",
-    "pg-promise": "^8.5.1"
+    "fs": "0.0.1-security",
+    "pg-promise": "^8.5.1",
+    "xml-js": "^1.6.8",
+    "xmlhttprequest": "^1.8.0"
   }
 }
