@@ -1,13 +1,15 @@
 const fs = require('fs');
+var cors = require('cors')
 var express = require('express'),
     app = express(),
     server = require('http').createServer(app),
-    port = process.env.PORT || 8080;
+    port = process.env.PORT || 8090;
 
 app.get('/', function(request, response) {
   var configJSON = JSON.parse(fs.readFileSync('rs_config.json'));
   var responseCombined = [];
-
+  app.use(cors({credentials: true, origin: true}));
+  response.header('Access-Control-Allow-Origin', '*');
   var dbPromises = configJSON.map((entry) => {
     return new Promise((resolve, reject) => {
       if (entry.type === "MongoDB") {
