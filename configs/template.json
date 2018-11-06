@@ -1,0 +1,44 @@
+[
+  {
+    "type": "MongoDB",
+    "config": {
+      "address": "",
+      "name": "",
+      "username": "",
+      "password": "",
+      "filterList": [
+        {
+          "collection": "",
+          "query": {},
+          "projection": {}
+        },
+        {
+          "collection": "",
+          "query": {},
+          "projection": {}
+        }
+      ]
+    }
+  },
+  {
+    "type": "PostgreSQL",
+    "config": {
+      "address": "",
+      "name": "",
+      "username": "",
+      "password": "",
+      "filterList": [
+        {
+          "table": "",
+          "query": "",
+          "filter": ""
+        },
+        {
+          "table": "",
+          "query": "",
+          "filter": ""
+        }
+      ]
+    }
+  }
+]

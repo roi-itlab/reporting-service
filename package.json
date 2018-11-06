@@ -1,19 +1,26 @@
 {
-    "name": "report-service",
-    "preferGlobal": true,
-    "version": "0.0.1",
-    "author": "Vladislav (@actuallyvlad)",
-    "description": "",
-    "license": "MIT",
-    "engines": {
-        "node": ">=0.10"
-    },
-    "scripts": {
-        "start": "node ./app.js"
-    },
-    "dependencies": {
-        "cors": "^2.8.4",
-        "express": ">=3.4.7",
-        "mongodb": "^3.1.8"
-    }
+  "name": "report-service",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./app.js"
+  },
+  "author": "Vladislav (@actuallyvlad)",
+  "license": "MIT",
+  "dependencies": {
+    "csv-parser": "^2.1.0",
+    "express": ">=3.4.7",
+    "fs": "0.0.1-security",
+    "pg-promise": "^8.5.1",
+    "xml-js": "^1.6.8",
+    "xmlhttprequest": "^1.8.0",
+    "cors": "^2.8.4",
+    "mongodb": "^3.1.8"
+  },
+  "preferGlobal": true,
+  "engines": {
+    "node": ">=0.10"
+  }
 }

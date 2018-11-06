@@ -1,0 +1,44 @@
+[
+  {
+    "type": "MongoDB",
+    "config": {
+      "address": "localhost:27017",
+      "name": "reporting-db",
+      "username": "",
+      "password": "",
+      "filterList": [
+        {
+          "collection": "NYC",
+          "query": {},
+          "projection": {"projection": {"_id":0}}
+        },
+        {
+          "collection": "exchange_rates",
+          "query": {},
+          "projection": {"projection": {"_id":0}}
+        }
+      ]
+    }
+  },
+  {
+    "type": "PostgreSQL",
+    "config": {
+      "address": "localhost:5432",
+      "name": "reporting-db",
+      "username": "postgres",
+      "password": "12345",
+      "filterList": [
+        {
+          "table": "mocktable",
+          "query": "SELECT *",
+          "filter": "WHERE name LIKE 'B%'"
+        },
+        {
+          "table": "mocktable",
+          "query": "SELECT *",
+          "filter": "WHERE name LIKE 'A%'"
+        }
+      ]
+    }
+  }
+]
