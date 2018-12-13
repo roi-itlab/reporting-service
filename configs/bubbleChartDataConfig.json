@@ -1,0 +1,18 @@
+[
+  {
+    "type": "MongoDB",
+    "config": {
+      "address": "localhost:27017",
+      "name": "reporting-db",
+      "username": "",
+      "password": "",
+      "filterList": [
+        {
+          "collection": "meteorite_landings",
+          "query": {},
+          "projection": {"projection": {"_id":0}}
+        }
+      ]
+    }
+  }
+]

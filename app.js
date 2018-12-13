@@ -4,13 +4,15 @@ var express = require('express'),
     server = require('http').createServer(app),
     port = process.env.PORT || 8090;
 
+var data
 app.get('/', function(request, response) {
+
   // get config: <server_address>/?config=config_name.json
   var configJSON = JSON.parse(fs.readFileSync(request.query.config));
   // we need to combine responses from all dbs and tables
   var responseCombined = [];
   response.header('Access-Control-Allow-Origin', '*');
-
+  console.log('eee');
   // for each config entry we're going to create a promise
   var dbPromises = configJSON.map((entry) => {
     return new Promise((resolve, reject) => {
@@ -84,38 +86,38 @@ app.get('/', function(request, response) {
           .catch((err) => reject(err));
       }
       else if (entry.type === "XML") {
-        // var data = require('xml-js')
-        //   .xml2json(
-        //     entry.config.address + "/" 
-        //     + entry.config.name, 
-        //     { compact: true, spaces: 4 }
-        //   );
+        var data = require('xml-js')
+          .xml2json(
+            entry.config.address + "/" 
+            + entry.config.name, 
+            { compact: true, spaces: 4 }
+          );
         
-        // responseCombined.push(data);
+        responseCombined.push(data);
 
         resolve();
       }
       else if (entry.type === "CSV") {
-        // function csvJSON(csv) {
-        //   var lines = csv.split("\n");
-        //   var result = [];
-        //   var headers = lines[0].split(",");
+        function csvJSON(csv) {
+          var lines = csv.split("\n");
+          var result = [];
+          var headers = lines[0].split(",");
 
-        //   for (var i = 1; i < lines.length; i++){
+          for (var i = 1; i < lines.length; i++){
 
-        //     var obj = {};
-        //     var currentline = lines[i].split(",");
+            var obj = {};
+            var currentline = lines[i].split(",");
 
-        //     for (var j = 0; j < headers.length; j++)
-        //       obj[headers[j]] = +currentline[j];
+            for (var j = 0; j < headers.length; j++)
+              obj[headers[j]] = +currentline[j];
             
-        //     result.push(obj);
-        //   }
+            result.push(obj);
+          }
           
-        //   return JSON.stringify(result);
-        // }
+          return JSON.stringify(result);
+        }
 
-        // var csv = csvJSON(entry.config.address + "/" + entry.config.name);
+        var csv = csvJSON(entry.config.address + "/" + entry.config.name);
 
         resolve();
       }
@@ -124,10 +126,21 @@ app.get('/', function(request, response) {
 
   // when all promises are resolved, we return the combined response
   Promise.all(dbPromises)
-          .then(() => response.json(responseCombined))
+          .then(() => { 
+          	data = responseCombined;
+          	response.json(responseCombined) }) 
           .catch((err) => response.send(err));
 });
 
 server.listen(port, function() {
   console.log('Listening on http://127.0.0.1:' + port);
 });
+
+// var WebSocketServer = require("ws").Server;
+// var wss = new WebSocketServer({ server: server });
+// wss.on("connection", function (ws) {
+//    console.log("websocket connection open");
+//    ws.on('message', function(message) {
+//     console.log('получено сообщение ' + message);
+//   });   
+// });

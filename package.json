@@ -10,14 +10,18 @@
   "author": "roi-itlab",
   "license": "MIT",
   "dependencies": {
+    "cors": "^2.8.4",
     "csv-parser": "^2.1.0",
     "express": ">=3.4.7",
     "fs": "0.0.1-security",
+    "mongodb": "^3.1.8",
+    "pg": "^7.7.1",
+    "pg-pool": "^2.0.4",
     "pg-promise": "^8.5.1",
+    "socket.io": "^2.2.0",
+    "ws": "^6.1.2",
     "xml-js": "^1.6.8",
-    "xmlhttprequest": "^1.8.0",
-    "cors": "^2.8.4",
-    "mongodb": "^3.1.8"
+    "xmlhttprequest": "^1.8.0"
   },
   "preferGlobal": true,
   "engines": {
